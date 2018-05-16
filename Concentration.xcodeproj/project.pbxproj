@@ -12,6 +12,8 @@
 		CE7ED84520AC9D98003987F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7ED84320AC9D98003987F5 /* Main.storyboard */; };
 		CE7ED84720AC9D98003987F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7ED84620AC9D98003987F5 /* Assets.xcassets */; };
 		CE7ED84A20AC9D98003987F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7ED84820AC9D98003987F5 /* LaunchScreen.storyboard */; };
+		CE7ED87120ACA6AB003987F5 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7ED87020ACA6AB003987F5 /* Concentration.swift */; };
+		CE7ED87320ACA708003987F5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7ED87220ACA708003987F5 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		CE7ED84620AC9D98003987F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7ED84920AC9D98003987F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7ED84B20AC9D98003987F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7ED87020ACA6AB003987F5 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		CE7ED87220ACA708003987F5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		CE7ED83E20AC9D98003987F5 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				CE7ED87020ACA6AB003987F5 /* Concentration.swift */,
+				CE7ED87220ACA708003987F5 /* Card.swift */,
 				CE7ED85120AC9DA6003987F5 /* Supporting Files */,
 				CE7ED84320AC9D98003987F5 /* Main.storyboard */,
 				CE7ED84120AC9D98003987F5 /* ViewController.swift */,
@@ -146,6 +152,8 @@
 			files = (
 				CE7ED84220AC9D98003987F5 /* ViewController.swift in Sources */,
 				CE7ED84020AC9D98003987F5 /* AppDelegate.swift in Sources */,
+				CE7ED87120ACA6AB003987F5 /* Concentration.swift in Sources */,
+				CE7ED87320ACA708003987F5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

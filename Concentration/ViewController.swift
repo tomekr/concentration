@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var game: Concentration = Concentration()
+    
     // Instance variable (i.e. property). All instance variables
     // need to be initialized.
     var flipCount = 0 {
