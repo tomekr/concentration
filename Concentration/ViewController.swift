@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     // The downside is that you can't use didSet. Also no one can use game until
     // cardButtons is initialized
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    var emojiChoices = ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"]
+    
+    // same as Dictionary<Int,String>()
+    var emoji = [Int:String]()
     
     // Instance variable (i.e. property). All instance variables
     // need to be initialized.
@@ -37,6 +41,17 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func touchNewGame(_ sender: UIButton) {
+        startNewGame()
+    }
+    
+    func startNewGame() {
+        emojiChoices = ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"]
+        game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+        updateViewFromModel()
+    }
+    
+    
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -50,11 +65,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    var emojiChoices = ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"]
-    
-    // same as Dictionary<Int,String>()
-    var emoji = [Int:String]()
+
     
     func emoji(for card: Card) -> String {
         // you can simulate and && with a comma in Swift
