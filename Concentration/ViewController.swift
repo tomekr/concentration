@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     // If you make a var lazy, it doesn't initialize until someone tries to use it.
     // The downside is that you can't use didSet. Also no one can use game until
     // cardButtons is initialized
-    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     // This is an example of a Computed Property
     var numberOfPairsOfCards: Int {
@@ -21,31 +22,31 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiThemes = [
+    private var emojiThemes = [
         ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"],
         ["🏌🏻", "🏇", "🥈", "🚴🏽‍♀️", "⛹🏾‍♀️", "🤽🏻‍♀️", "🏄🏼‍♀️", "🏋️‍♀️", "🤼‍♂️"],
         ["🎹", "🥁", "🎼", "🎧", "🎷", "🎬", "🎤", "🎸", "🎻"]
     ]
-    lazy var randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
-    lazy var emojiChoices = emojiThemes[randomIndex]
+    private lazy var randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
+    private lazy var emojiChoices = emojiThemes[randomIndex]
     
     // same as Dictionary<Int,String>()
     var emoji = [Int:String]()
     
     // Instance variable (i.e. property). All instance variables
     // need to be initialized.
-    var flipCount = 0 {
+    private(set) var flipCount = 0 {
         // Property observer that will execute anytime the variable changes
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
     
-    @IBOutlet var cardButtons: [UIButton]!
-    
-    @IBOutlet weak var flipCountLabel: UILabel!
-    
-    @IBAction func touchCard(_ sender: UIButton) {
+    // Outlets are almost always private since they're internal details about our UI.
+    // No reason to make this public
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)

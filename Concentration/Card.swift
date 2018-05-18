@@ -15,9 +15,9 @@ struct Card
     var identifier: Int
     // Card is UI independent so we don't put the emoji here
     
-    static var identifierFactory = 0
+    private static var identifierFactory = 0
     
-    static func getUniqueIdentifier() -> Int {
+    private static func getUniqueIdentifier() -> Int {
         identifierFactory += 1
         return identifierFactory
     }
