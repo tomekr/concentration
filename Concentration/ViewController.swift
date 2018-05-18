@@ -12,7 +12,14 @@ class ViewController: UIViewController {
     // If you make a var lazy, it doesn't initialize until someone tries to use it.
     // The downside is that you can't use didSet. Also no one can use game until
     // cardButtons is initialized
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    // This is an example of a Computed Property
+    var numberOfPairsOfCards: Int {
+        get {
+            return (cardButtons.count+1) / 2
+        }
+    }
     
     var emojiThemes = [
         ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"],
