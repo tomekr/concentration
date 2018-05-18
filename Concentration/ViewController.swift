@@ -13,7 +13,14 @@ class ViewController: UIViewController {
     // The downside is that you can't use didSet. Also no one can use game until
     // cardButtons is initialized
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    var emojiChoices = ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"]
+    
+    var emojiThemes = [
+        ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"],
+        ["🏌🏻", "🏇", "🥈", "🚴🏽‍♀️", "⛹🏾‍♀️", "🤽🏻‍♀️", "🏄🏼‍♀️", "🏋️‍♀️", "🤼‍♂️"],
+        ["🎹", "🥁", "🎼", "🎧", "🎷", "🎬", "🎤", "🎸", "🎻"]
+    ]
+    lazy var randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
+    lazy var emojiChoices = emojiThemes[randomIndex]
     
     // same as Dictionary<Int,String>()
     var emoji = [Int:String]()
@@ -46,11 +53,15 @@ class ViewController: UIViewController {
     }
     
     func startNewGame() {
-        emojiChoices = ["🎃", "👻", "🤡", "👅", "🐃", "🍱", "🍩", "🎬", "🚌"]
+        let randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
+        emojiChoices = emojiThemes[randomIndex]
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
         updateViewFromModel()
     }
     
+    func addNewTheme(with emojiSet: [String]) {
+        emojiThemes.append(emojiSet)
+    }
     
     func updateViewFromModel() {
         for index in cardButtons.indices {
