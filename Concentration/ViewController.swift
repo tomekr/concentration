@@ -102,3 +102,7 @@ class ViewController: UIViewController {
     }
 }
 
+//extension Int {
+//    var arc4random
+//}
+
