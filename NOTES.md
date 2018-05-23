@@ -70,3 +70,35 @@ There are keywords you can use when defining, for example, your model API that s
 ### Extensions
 
 Allows you to extend existing data structures
+
+
+### enum
+
+```swift
+enumm FastFoodMenuItem {
+	case hamburger(numberOfPatties: Int)
+	case fries(size: FryOrderSize)
+	case drink(String, ounces: Int)
+	case cookie
+}
+```
+
+enums, like structs get copied as they get passed around
+
+Enums in swift are a little more powerful because each case can also have associated data.
+
+Swift requires you to check every single state when using a switch statement to check the state of an item
+
+Enums can have methods or vars but no storage
+
+### Optionals
+
+An Optional is just an `enum`. It essentially looks like:
+
+```swift
+enum Optional<T> {
+	case none
+	case some(<T>)
+}
+```
+
