@@ -30,9 +30,6 @@ class ViewController: UIViewController {
     private lazy var randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
     private lazy var emojiChoices = emojiThemes[randomIndex]
     
-    // same as Dictionary<Int,String>()
-    var emoji = [Int:String]()
-    
     // Instance variable (i.e. property). All instance variables
     // need to be initialized.
     private(set) var flipCount = 0 {
@@ -86,10 +83,13 @@ class ViewController: UIViewController {
     }
 
     
-    func emoji(for card: Card) -> String {
+    // same as Dictionary<Int,String>()
+    var emoji = [Card:String]()
+    
+    private func emoji(for card: Card) -> String {
         // you can simulate and && with a comma in Swift
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
         }
         // The below one-liner is exactly the same as:
         // if emoji[card.identifier] != nil {
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         // } else {
         //     return "?"
         // }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
 }
 

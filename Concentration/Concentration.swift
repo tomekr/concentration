@@ -40,7 +40,7 @@ struct Concentration
         // This is where the meat of our game logic lives
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceCard, matchIndex != index {
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
