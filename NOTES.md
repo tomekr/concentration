@@ -102,3 +102,49 @@ enum Optional<T> {
 }
 ```
 
+## Lecture 4
+
+Making Concentration a `struct`
+
+### Data Structures: `protocol`
+
+A Basically a list of methods and vars with no implementation
+
+* No data storage
+
+What are protocols good for:
+
+* Making API more flexible and expressive
+* Super good for blind, structured communication between View and Controller (delegation)
+* Mandating behavior (e.g. the keys of a Dictionary must be hashable)
+
+There are 3 aspects to a protocol:
+
+1. the protocol declaration (which properties and methods are in the protocol?)
+2. a class, struct, or enum declaration that makes the **claim** to implement the protocol
+3. the **code** in said class, struct, or enum (or extension) that implements the protocol
+
+How to declare a prototype:
+
+```swift
+protocol SomeProtocol : InheritedProtocol1, InheritedProtocol2 {
+	var someProperty: Int { get set }
+	func aMethod(arg1: Double, anotherArgument: String) -> SomeType
+	// Any functions that are expected to mutate the receiver should
+	// be marked mutating
+	mutating fun changeIt()
+	init(arg: Type)
+}
+```
+
+Here is how a class would implement that protocol:
+
+```swift
+class SomeClass : SuperclassOfSomeClass, SomeProtocol, AnotherProtocol {
+	// implementation of SomeClass here which must include all
+	// the properties and methods in SomeProtocol & AnotherProtocol
+}
+```
+
+MVC Delegation is a very important use of Protocols
+
