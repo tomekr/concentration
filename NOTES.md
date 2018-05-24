@@ -148,3 +148,53 @@ class SomeClass : SuperclassOfSomeClass, SomeProtocol, AnotherProtocol {
 
 MVC Delegation is a very important use of Protocols
 
+Protocols can support default implementations through Extensions
+
+### String
+
+A String is made up of Unicodes, but there's also the concept of a **Character**. A Characte is wht ahuman would perceive to be a single lexical ccharacter. This is true even if a single Character is made up of multiple Unicodes.
+
+Strings are indexed by their own special type, `String.Index`
+
+### Function Types
+
+### Closures
+
+Often you want to create the function "on the fly" (rather than already-existing like sqrt). You can do this "in line" using a closure.
+
+Imagine we had a function that changed the sign of its argument
+
+```swift
+func changeSign(operand: Double) -> Double { return -operand }
+```
+
+Using a Function Type we could do:
+
+```swift
+var operation: (Double) -> Double
+operation = changeSign
+let result = operation(4.0) // result will be -4.0
+```
+
+but with a closure we could do:
+
+```swift
+var operation: (Double) -> Double
+operation = { -$0 } // $0 represents the first param passed to the closure
+let result = operation(4.0) // result will be -4.0
+
+```
+
+A map is a good example of using a closure
+
+Closures are also useful for property initialization
+
+```swift
+var someProperty: Type = {
+	// construct the value of someProperty here
+	return <the constructed value>
+}()
+```
+
+This is especially useful with lazy property initialization
+

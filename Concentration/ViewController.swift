@@ -30,19 +30,33 @@ class ViewController: UIViewController {
     private lazy var randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
     private lazy var emojiChoices = emojiThemes[randomIndex]
     
+    
     // Instance variable (i.e. property). All instance variables
     // need to be initialized.
     private(set) var flipCount = 0 {
         // Property observer that will execute anytime the variable changes
         didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
+            updateFlipCountLabel()
         }
+    }
+    
+    private func updateFlipCountLabel() {
+        let attributes: [NSAttributedStringKey: Any] = [
+            .strokeWidth : 5.0,
+            .strokeColor : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        ]
+        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
     }
     
     // Outlets are almost always private since they're internal details about our UI.
     // No reason to make this public
     @IBOutlet private var cardButtons: [UIButton]!
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {

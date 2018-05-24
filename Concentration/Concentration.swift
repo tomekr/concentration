@@ -14,17 +14,8 @@ struct Concentration
     
     private var indexOfOneAndOnlyFaceCard: Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            // oneAndOnly is an extension we defined at the bottom of this file
+            return  cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
         }
         // Actually set will default to newValue so you don't actually have to
         // have that in the method signature
@@ -61,5 +52,11 @@ struct Concentration
         }
         
         // TODO: HOMEWORK: Shuffle the cards
+    }
+}
+
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
     }
 }
