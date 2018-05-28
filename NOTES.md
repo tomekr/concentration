@@ -198,3 +198,55 @@ var someProperty: Type = {
 
 This is especially useful with lazy property initialization
 
+## Lecture 5: More Swift
+
+### Thrown Errors
+
+Methods can throw errors which can be seen because the method signature contains the syntax `throws`.
+
+```swift
+do {
+	try context.save() // In this case save can throw
+} catch let error {
+	// error will be something that implements the Error protocol, e.g. NSError
+	// usually these are enums that have associated values to get error details
+	throw error // this would re-throw the error (only ok if the methed we are in throws)
+}
+```
+
+### Any and AnyObject
+
+There for backwards compatability with Obj-C, should pretty much avoid using it at all costs
+
+In Swift, you can't normally send messages to an object that is of type Any
+
+### Other Interesting Classes
+
+* `NSObject`
+* `NSNumber`
+* `Date`
+* `Data`: A value type "bag of bits". Used to save/restore/transmit raw data throughout the iOS SDK
+
+### Views
+
+* A view (i.e. `UIView` subclass) represents a rectangular area
+* Hierarchical
+	* A view has only one superview ... `var superview: UIView?
+	* But it can have many (or zero) subviews ... `var subviews: [UIView]
+	* Order in the subviews array matters
+
+* The hierarchy is most often constructed in Xcode graphically
+
+### Initializing a UIView
+
+* Try to avoid an initializer if possible
+	* But having one in UIView is slightly more common than having a `UIViewController` initializer
+* A UIView's initializer is different if it comes out of a storyboard
+  
+  ```swift
+  init(frame: CGRecrt) // UIView is created in code
+  init(coder: NSCoder) // UIViews comes out of a storyboard
+  ```
+
+### Gestures
+
